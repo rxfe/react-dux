@@ -1,0 +1,29 @@
+# NPM
+/node_modules/
+/npm-debug.log
+
+# Build
+/dev/build
+/dev/.release
+# SASS cache
+.sass-cache/
+# Test
+/test/screenshot/
+
+# Global (additional insurance for someone who haven't add this in global gitignore)
+.DS_Store
+package-lock.json
+/.idea
+/dist
+/app/node_modules
+/client/webpack-assets.json
+*.patch
+
+# VIM
+*.swp
+
+# VS
+.vscode/
+
+# Other
+mss-deploy.log

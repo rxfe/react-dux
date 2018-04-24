@@ -1,0 +1,54 @@
+{
+  "name": "react-dux",
+  "version": "1.0.0",
+  "description": "react & redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rxfe/react-dux.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "lanmingming@meituan.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rxfe/react-dux/issues"
+  },
+  "homepage": "https://github.com/rxfe/react-dux#readme",
+  "devDependencies": {
+    "webpack": "^4.6.0",
+    "eslint": "^3.13.0",
+    "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-webpack-loaders": "^0.8.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-env": "^1.1.6",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-optimize": "^1.0.1",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-import-resolver-webpack": "^0.8.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-mocha": "^4.8.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.9.0"
+  },
+  "dependencies": {
+    "lodash.merge": "^4.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
+}

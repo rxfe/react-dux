@@ -1,0 +1,5 @@
+node_modules/*.js
+node_modules/**/*.js
+client/vendor/
+test/
+complex-records/

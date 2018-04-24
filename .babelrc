@@ -1,0 +1,19 @@
+{
+  "presets": [
+    ["env", { "targets": {"chrome": 55, "browsers": ["last 2 versions"]}}],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "add-module-exports"
+  ],
+  "env": {
+    "production": {
+      "plugins": ["babel-plugin-dev-expression"]
+    },
+    "local": {
+      "plugins": ["babel-plugin-dev-expression"]
+    }
+  }
+}
