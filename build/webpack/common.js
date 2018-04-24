@@ -1,8 +1,8 @@
 /**
  * @file webpack common
  */
-import { path } from 'path'
-import merge from 'lodash.merge'
+const path = require('path')
+const merge = require('lodash.merge')
 
 function outputDist() {
   return path.resolve(process.cwd(), 'dist')
@@ -13,17 +13,17 @@ function getEntries() {
   const NODE_ENV = process.env.NODE_ENV
   const BUILD_PROJECT = process.env.BUILD_PROJECT
   const projectsHash = {
-    demo: './page/demo/index.js',
-    error: './page/error/index.js',
-    notfound: './page/notfound/index.js',
-    forbidden: './page/forbidden/index.js'
+    // demo: './page/Demo',
+    error: './pages/Error/index.js',
+    // notfound: './page/notfound/index.js',
+    // forbidden: './page/forbidden/index.js'
   }
   if (NODE_ENV === 'local') {
     const result = {}
     Object.keys(projectsHash).forEach((key) => {
       result[key] = [
         'react-hot-loader/patch',
-        `webpack-dev-server/client?http://${host}:${port}/`,
+        `webpack-dev-server/client?http://localhost:${port}/`,
         'webpack/hot/only-dev-server',
         projectsHash[key]
       ]
