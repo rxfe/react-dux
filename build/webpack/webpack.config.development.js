@@ -89,8 +89,8 @@ module.exports = merge.smart(baseConfig, {
     }),
     new HtmlWebpackPlugin({
       template: path.join(process.cwd(), 'client', 'index.html'),
-      chunks: ['demo'],
-      filename: './demo/index.html'
+      chunks: ['todo'],
+      filename: './todo/index.html'
       // vendor: path.join(`/dist/${vendorJson.name}.js`)
     })
   ],
@@ -115,7 +115,7 @@ module.exports = merge.smart(baseConfig, {
       verbose: true,
       disableDotRule: false,
       rewrites: [
-        { from: /^\/demo/, to: '/demo/index.html' },
+        { from: /^\/todo/, to: '/todo/index.html' },
         { from: /^\/error/, to: '/error/index.html' },
       ]
     },
