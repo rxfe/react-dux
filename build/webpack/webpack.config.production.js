@@ -10,8 +10,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const baseConfig = require('./webpack.config.base')
 const { getEntries, outputDist } = require('./common')
-
+/* eslint-disable */
 const vendorJson = require(path.join(outputDist(), 'vendor.json'))
+/* eslint-enable */
 const prodConfig = {
   entry: merge.smart({}, getEntries()),
 

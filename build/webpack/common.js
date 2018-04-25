@@ -18,10 +18,10 @@ function getEntries() {
   const NODE_ENV = process.env.NODE_ENV
   const BUILD_PROJECT = process.env.BUILD_PROJECT
   const projectsHash = {
-    // demo: './page/Demo',
+    demo: './pages/Demo/index.js',
     error: './pages/Error/index.js',
-    // notfound: './page/notfound/index.js',
-    // forbidden: './page/forbidden/index.js'
+    // notfound: './pages/notfound/index.js',
+    // forbidden: './pages/forbidden/index.js'
   }
 
   switch (NODE_ENV) {

@@ -14,9 +14,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
 const { outputDist, getEntries } = require('./common')
-
+/* eslint-disable */
 const vendorJson = require(path.join(outputDist(), 'vendor.json'))
-
+/* eslint-enable */
 // const { host } = require('../../config')
 const host = 'localhost'
 
@@ -83,7 +83,15 @@ module.exports = merge.smart(baseConfig, {
     }),
     new HtmlWebpackPlugin({
       template: path.join(process.cwd(), 'client', 'index.html'),
-      vendor: path.join(`/dist/${vendorJson.name}.js`)
+      chunks: ['error'],
+      filename: './error/index.html'
+      // vendor: path.join(`/dist/${vendorJson.name}.js`)
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(process.cwd(), 'client', 'index.html'),
+      chunks: ['demo'],
+      filename: './demo/index.html'
+      // vendor: path.join(`/dist/${vendorJson.name}.js`)
     })
   ],
 
@@ -105,7 +113,11 @@ module.exports = merge.smart(baseConfig, {
     },
     historyApiFallback: {
       verbose: true,
-      disableDotRule: false
+      disableDotRule: false,
+      rewrites: [
+        { from: /^\/demo/, to: '/demo/index.html' },
+        { from: /^\/error/, to: '/error/index.html' },
+      ]
     },
     // setup() {
     //   childProcess
