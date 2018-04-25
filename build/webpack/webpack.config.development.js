@@ -11,14 +11,17 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
 const { outputDist, getEntries } = require('./common')
+
+const vendorJson = require(path.join(outputDist(), 'vendor.json'))
+
 // const { host } = require('../../config')
 const host = 'localhost'
 
 const port = process.env.PORT || 3333
 const publicPath = `http://${host}:${port}/dist/`
-
 module.exports = merge.smart(baseConfig, {
   devtool: '#cheap-module-eval-source-map',
 
@@ -60,10 +63,10 @@ module.exports = merge.smart(baseConfig, {
       'process.env.NODE_ENV': JSON.stringify('dev')
     }),
 
-    new webpack.DllReferencePlugin({
-      context: __dirname, // context 需要跟 DllPlugin 保持一致，这个用来指导 Webpack 匹配 manifest 中库的路径
-      manifest: path.resolve(outputDist(), './vendor.json') // manifest 用来引入刚才输出的 manifest 文件
-    }),
+    // new webpack.DllReferencePlugin({
+    //   context: __dirname, // context 需要跟 DllPlugin 保持一致，这个用来指导 Webpack 匹配 manifest 中库的路径
+    //   manifest: path.resolve(outputDist(), './vendor.json') // manifest 用来引入刚才输出的 manifest 文件
+    // }),
 
     new ExtractTextPlugin({
       filename: '[name].css',
@@ -78,7 +81,10 @@ module.exports = merge.smart(baseConfig, {
     new webpack.LoaderOptionsPlugin({
       debug: true
     }),
-
+    new HtmlWebpackPlugin({
+      template: path.join(process.cwd(), 'client', 'index.html'),
+      vendor: path.join(`/dist/${vendorJson.name}.js`)
+    })
   ],
 
   devServer: {

@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dll": "webpack --config ./build/webpack/webpack.config.dll.js --progress --profile --colors",
+    "build": "npm run dll && npm run pack",
+    "pack": "webpack --config ./build/webpack/webpack.config.production.js --progress --profile --colors",
     "hot-server": "cross-env NODE_ENV=local node --trace-warnings -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config ./build/webpack/webpack.config.development.js --progress --profile --colors",
-    "dev": "npm run hot-server",
+    "dev": "webpack --config ./build/webpack/webpack.config.development.js && webpack-dev-server --config ./build/webpack/webpack.config.development.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -50,6 +52,7 @@
     "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.8.3",
     "react-hot-loader": "^4.1.1",
     "sass-loader": "^7.0.1",

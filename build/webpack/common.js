@@ -4,9 +4,14 @@
 const path = require('path')
 const merge = require('lodash.merge')
 
+const ENV = {
+  LOCAL: 'local', // 本地环境
+}
+
 function outputDist() {
   return path.resolve(process.cwd(), 'dist')
 }
+
 /* 获取 webpack entry 配置 */
 function getEntries() {
   const port = process.env.PORT || 3333
@@ -18,19 +23,31 @@ function getEntries() {
     // notfound: './page/notfound/index.js',
     // forbidden: './page/forbidden/index.js'
   }
-  if (NODE_ENV === 'local') {
-    const result = {}
-    Object.keys(projectsHash).forEach((key) => {
-      result[key] = [
+
+  switch (NODE_ENV) {
+    case ENV.LOCAL: {
+      const devConf = [
         'react-hot-loader/patch',
         `webpack-dev-server/client?http://localhost:${port}/`,
-        'webpack/hot/only-dev-server',
-        projectsHash[key]
+        'webpack/hot/only-dev-server'
       ]
-    })
-    return result
+      return Object
+        .keys(projectsHash)
+        .reduce((acc, key) => {
+          const projectEntry = projectsHash[key]
+          acc[key] = devConf.concat(projectEntry)
+          return acc
+        }, {})
+    }
+    default: {
+      if (BUILD_PROJECT) {
+        return {
+          [BUILD_PROJECT]: projectsHash[BUILD_PROJECT]
+        }
+      }
+      return projectsHash
+    }
   }
-  return BUILD_PROJECT ? { [BUILD_PROJECT]: projectsHash[BUILD_PROJECT] } : projectsHash
 }
 
 const webpackAlias = {
