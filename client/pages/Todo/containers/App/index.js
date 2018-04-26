@@ -3,13 +3,13 @@
  */
 
 import React from 'react'
-// import Footer from '../Footer'
 import AddTodo from '../AddTodo'
-// import VisibleTodoList from '../VisibleTodoList'
+import TodoListPanel from '../TodoLIstPanel'
 
 const App = () => (
   <div>
     <AddTodo />
+    <TodoListPanel />
   </div>
 )
 
