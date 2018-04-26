@@ -20,8 +20,6 @@ function getEntries() {
   const projectsHash = {
     todo: './pages/Todo/index.js',
     error: './pages/Error/index.js',
-    // notfound: './pages/notfound/index.js',
-    // forbidden: './pages/forbidden/index.js'
   }
 
   switch (NODE_ENV) {

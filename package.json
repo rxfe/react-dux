@@ -26,7 +26,6 @@
   "homepage": "https://github.com/rxfe/react-dux#readme",
   "devDependencies": {
     "babel-core": "^6.21.0",
-    "babel-eslint": "^7.1.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-dev-expression": "^0.2.1",
@@ -39,7 +38,8 @@
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
     "css-loader": "^0.28.11",
-    "eslint": "^3.13.0",
+    "eslint": "^4.8.0",
+    "babel-eslint": "^8.0.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-import-resolver-webpack": "^0.8.0",
@@ -65,10 +65,13 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "cross-env": "^5.0.0",
     "lodash.merge": "^4.6.1",
+    "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "cross-env": "^5.0.0"
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   },
   "optionalDependencies": {
     "fsevents": "1.1.1"

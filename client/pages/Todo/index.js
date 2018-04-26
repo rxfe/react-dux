@@ -1,26 +1,18 @@
 /**
- * @file demo page
+ * @file todo page
  */
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import configureStore from './redux/store'
+import App from './containers/App'
 
-class Error extends Component {
+const store = configureStore()
 
-  render() {
-    return (
-      <div className="error">
-        <div className="content">
-          <div className="tipbox">
-            <h2>demo.</h2>
-            <div className="other">
-              <p>别担心，你可以点击链接继续浏览：</p>
-              <a href="/">返回首页</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
+const AppContainer = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
 
-ReactDOM.render(<Error />, document.getElementById('app'))
+render(<AppContainer />, document.getElementById('app'))
