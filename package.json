@@ -26,6 +26,7 @@
   "homepage": "https://github.com/rxfe/react-dux#readme",
   "devDependencies": {
     "babel-core": "^6.21.0",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-dev-expression": "^0.2.1",
@@ -39,7 +40,6 @@
     "babel-register": "^6.18.0",
     "css-loader": "^0.28.11",
     "eslint": "^4.8.0",
-    "babel-eslint": "^8.0.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-import-resolver-webpack": "^0.8.0",
@@ -55,6 +55,7 @@
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.8.3",
     "react-hot-loader": "^4.1.1",
+    "redux-devtools-extension": "^2.13.2",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",

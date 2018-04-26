@@ -39,10 +39,6 @@ export default function createReducer(handlers, initialState) {
     // 同步 Reducer
     const handler = handlers[type]
     const handlerState = typeof handler === 'function' ? handler(state, action) : state
-    return {
-      ...handlerState,
-      isFetching: false,
-      fetchError: null
-    }
+    return handlerState
   }
 }

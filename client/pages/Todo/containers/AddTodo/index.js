@@ -22,6 +22,7 @@ class AddTodo extends React.Component {
     if (!this.input.value.trim()) {
       return
     }
+    this.props.addTodo(this.input.value)
     this.input.value = ''
   }
   render() {
