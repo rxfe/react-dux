@@ -8,7 +8,7 @@ const paddingReg = /_PADDING$/
 const successReg = /_SUCCESS$/
 const errorReg = /_ERROR$/
 
-export default function createReducer(handlers, initialState) {
+export function createAsyncReducer(handlers, initialState) {
   return (state = initialState, action) => {
     const { type, payload } = action
 
@@ -21,7 +21,8 @@ export default function createReducer(handlers, initialState) {
       }
     }
     if (successReg.test(type)) {
-      const handler = handlers[type.replace(successReg, '')]
+      const rawType = type.replace(successReg, '')
+      const handler = handlers[rawType]
       const handlerState = typeof handler === 'function' ? handler(state, action) : state
       return {
         ...handlerState,
@@ -36,7 +37,14 @@ export default function createReducer(handlers, initialState) {
         fetchError: payload
       }
     }
-    // 同步 Reducer
+    return state
+  }
+}
+
+export function createReducer(handlers, initialState) {
+  // 同步 Reducer
+  return (state = initialState, action) => {
+    const { type } = action
     const handler = handlers[type]
     const handlerState = typeof handler === 'function' ? handler(state, action) : state
     return handlerState

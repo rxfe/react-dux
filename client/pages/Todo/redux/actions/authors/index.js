@@ -9,12 +9,12 @@ export function fetchAuthors() {
     type: FETCH_AUTHORS,
     payload: new Promise((resolve, reject) => {
       setTimeout(() => {
-        const isNormal = Math.random() > 0.5
+        const isNormal = Math.random() > 0.2
         if (isNormal) {
           resolve([
             {
               name: 'lanmingming',
-              github: 'github.com/Micleming'
+              github: 'https://github.com/Micleming'
             }
           ])
         } else {

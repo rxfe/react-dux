@@ -21,7 +21,7 @@ class TodoListPanel extends Component {
     const { todos, authors } = this.props
     return (
       <div>
-        { false && <TodoList todos={todos} />}
+        <TodoList todos={todos} />
         <AuthorList authors={authors} />
         <button onClick={this.props.fetchAuthors}>异步获取数据</button>
       </div>

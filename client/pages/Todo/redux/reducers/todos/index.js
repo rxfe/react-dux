@@ -2,7 +2,7 @@
  * @file addTodo reducer
  */
 
-import createReducer from '../../utils'
+import { createReducer } from '../../utils'
 import { ADD_TODO } from '../../actions/todo/actionTypes'
 
 const initialState = []
