@@ -1,13 +1,19 @@
 /**
  * @file create reducer
- * @desc 异步 Reducer 函数调用 createReducer
- * @desc 非异步 Reducer 函数调用 createReducer
  */
 
 const paddingReg = /_PADDING$/
 const successReg = /_SUCCESS$/
 const errorReg = /_ERROR$/
 
+
+/**
+ * create async reducer
+ * @export
+ * @param {object} handlers
+ * @param {object} initialState
+ * @returns function
+ */
 export function createAsyncReducer(handlers, initialState) {
   return (state = initialState, action) => {
     const { type, payload } = action
@@ -41,6 +47,14 @@ export function createAsyncReducer(handlers, initialState) {
   }
 }
 
+/**
+ * create sync reducer
+ *
+ * @export
+ * @param {object} handlers
+ * @param {object} initialState
+ * @returns function
+ */
 export function createReducer(handlers, initialState) {
   // 同步 Reducer
   return (state = initialState, action) => {
