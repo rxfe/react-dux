@@ -21,6 +21,22 @@ class TodoListPanel extends Component {
     authorsWithTods: PropTypes.arrayOf(PropTypes.object).isRequired,
     fetchAuthors: PropTypes.func.isRequired
   }
+  constructor() {
+    super()
+    this.state = {
+      sum: 0
+    }
+  }
+
+  clickHandler() {
+    import('../../utils/math').then((math) => {
+      const num = math.add(12, 13)
+      this.setState({
+        sum: num
+      })
+      return true
+    }).catch(() => {})
+  }
 
   render() {
     const { todos, authors, authorsWithTods } = this.props
@@ -39,6 +55,7 @@ class TodoListPanel extends Component {
             </div>
           )
         })}
+        <button onClick={this.clickHandler.bind(this)}>code split: {this.state.sum}</button>
       </div>
     )
   }

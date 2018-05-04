@@ -27,15 +27,26 @@ const createErrorAction = (actionType, error) => ({
   payload: error
 })
 
-export default function promsieMiddleware({ dispatch }) {
+export default function promsieMiddleware({ dispatch, getState }) {
   return next => (action) => {
+    // 兼容redux-thunk
+    if (typeof action === 'function') {
+      return action(dispatch, getState)
+    }
+    if (!('payload' in action)) {
+      return next(action)
+    }
+    // redux-promise
     const { payload, type } = action
     const isAsyncAction = isPromise(payload)
     if (isAsyncAction) {
       dispatch(createPaddingAction(type))
     }
     return isAsyncAction ? payload.then(
-      result => dispatch(createSuccessAction(type, result)),
+      (result) => {
+        dispatch(createSuccessAction(type, result))
+        return result
+      },
       (error) => {
         dispatch(createErrorAction(type, error))
         return Promise.reject(error)
